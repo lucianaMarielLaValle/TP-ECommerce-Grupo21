@@ -1,0 +1,28 @@
+namespace Notifications.API.HttpClients;
+
+public class CorrelationIdHandler : DelegatingHandler
+{
+    private const string HeaderName = "X-Correlation-Id";
+    private readonly IHttpContextAccessor _httpContextAccessor;
+
+    public CorrelationIdHandler(IHttpContextAccessor httpContextAccessor)
+    {
+        _httpContextAccessor = httpContextAccessor;
+    }
+
+    protected override Task<HttpResponseMessage> SendAsync(
+        HttpRequestMessage request,
+        CancellationToken cancellationToken)
+    {
+        var correlationId = _httpContextAccessor.HttpContext?
+            .Response.Headers[HeaderName]
+            .FirstOrDefault();
+
+        if (!string.IsNullOrWhiteSpace(correlationId))
+        {
+            request.Headers.Add(HeaderName, correlationId);
+        }
+
+        return base.SendAsync(request, cancellationToken);
+    }
+}
