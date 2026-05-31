@@ -1,4 +1,6 @@
 using Users.API.ExceptionHandlers;
+using Users.API.Repositories;
+using Users.API.Services;
 using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -36,6 +38,10 @@ builder.Services.AddSwaggerGen(options =>
         options.IncludeXmlComments(xmlPath);
     }
 });
+
+// Inyección de dependencias del dominio
+builder.Services.AddSingleton<IUserRepository, InMemoryUserRepository>();
+builder.Services.AddScoped<IUserService, UserService>();
 
 // Manejadores de excepciones (orden importa: del más específico al más general)
 builder.Services.AddExceptionHandler<ValidationExceptionHandler>();
