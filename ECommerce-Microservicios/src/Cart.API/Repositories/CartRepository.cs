@@ -49,7 +49,7 @@ public class CartRepository(IConfiguration config, ILogger<CartRepository> logge
             Items = items.Select(i => new CartItem
             {
                 ProductoId = Guid.Parse(i.producto_id),
-                Cantidad = i.cantidad
+                Cantidad = (int)i.cantidad
             }).ToList()
         };
     }
@@ -116,5 +116,5 @@ public class CartRepository(IConfiguration config, ILogger<CartRepository> logge
     }
 
     private sealed record CartRow(string usuario_id, string fecha_actualizacion);
-    private sealed record ItemRow(string producto_id, int cantidad);
+    private sealed record ItemRow(string producto_id, long cantidad);
 }
