@@ -139,7 +139,7 @@ public class OrderRepository(IConfiguration config, ILogger<OrderRepository> log
         return filas.Select(f => new OrderItem
         {
             ProductoId = Guid.Parse(f.producto_id),
-            Cantidad = f.cantidad,
+            Cantidad = (int)f.cantidad,
             PrecioUnitario = (decimal)f.precio_unitario
         }).ToList();
     }
@@ -156,5 +156,5 @@ public class OrderRepository(IConfiguration config, ILogger<OrderRepository> log
 
     // Registros internos que reflejan las columnas crudas de la base.
     private sealed record OrderRow(string id, string usuario_id, double total, string estado, string fecha_creacion);
-    private sealed record ItemRow(string producto_id, int cantidad, double precio_unitario);
+    private sealed record ItemRow(string producto_id, long cantidad, double precio_unitario);
 }
