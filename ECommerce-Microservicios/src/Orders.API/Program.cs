@@ -1,3 +1,4 @@
+using Orders.API;
 using System.Reflection;
 using System.Text;
 using Dapper;
@@ -49,12 +50,12 @@ builder.Services.AddScoped<OrderService>();
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddTransient<CorrelationIdHandler>();
 
-builder.Services.AddHttpClient("Users", c =>
-        c.BaseAddress = new Uri(builder.Configuration["Services:UsersApi"] ?? "http://localhost:5002"))
+builder.Services.AddHttpClient<UsersClient>(c =>
+        c.BaseAddress = new Uri(builder.Configuration["ServiciosExternos:UsersApiUrl"] ?? "http://localhost:5212"))
     .AddHttpMessageHandler<CorrelationIdHandler>();
 
-builder.Services.AddHttpClient("Products", c =>
-        c.BaseAddress = new Uri(builder.Configuration["Services:ProductsApi"] ?? "http://localhost:5001"))
+builder.Services.AddHttpClient<ProductsClient>(c =>
+        c.BaseAddress = new Uri(builder.Configuration["ServiciosExternos:ProductsApiUrl"] ?? "http://localhost:5000"))
     .AddHttpMessageHandler<CorrelationIdHandler>();
 
 
