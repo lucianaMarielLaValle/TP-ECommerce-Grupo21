@@ -28,7 +28,7 @@ public class NotificationService : INotificationService
 
         if (request.Tipo != "Email" && request.Tipo != "SMS" && request.Tipo != "Push")
         {
-            throw new ValidationException("NTF-003", "El campo Tipo debe ser Email, SMS o Push.");
+            throw new ValidationException("NTF-002", "El campo Tipo debe ser Email, SMS o Push.");
         }
 
         if (request.UsuarioId == Guid.Empty)
@@ -67,6 +67,11 @@ public class NotificationService : INotificationService
         foreach (var notification in notifications)
         {
             result.Add(MapToResponse(notification));
+        }
+
+        if (result.Count == 0)
+        {
+            throw new NotFoundException("NTF-003", "No se encontraron notificaciones para el usuario.");
         }
 
         return result;

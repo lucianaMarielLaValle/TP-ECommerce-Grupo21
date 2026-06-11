@@ -78,7 +78,7 @@ public class OrderService
             {
                 _logger.LogWarning("Stock insuficiente. ErrorCode={ErrorCode}, ProductoId={ProductoId}", "ORD-005", itemReq.ProductoId);
                 throw new ReglaNegocioException("ORD-005",
-                    $"Stock insuficiente para '{producto.Nombre}'. Disponible: {producto.Stock}, solicitado: {itemReq.Cantidad}.");
+                    $"Stock insuficiente para '{producto.Nombre}'. Disponible: {producto.Stock}, solicitado: {itemReq.Cantidad}.", 422);
             }
 
             // 5 y 6. Capturar precio unitario y acumular total
