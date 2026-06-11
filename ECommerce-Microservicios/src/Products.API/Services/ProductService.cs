@@ -97,6 +97,12 @@ public class ProductService
             throw new NoEncontradoException("PRD-001", "Producto no encontrado.");
         }
 
+        // TODO PRD-004: antes de eliminar, consultar a Orders.API si el producto
+        // tiene órdenes en estado Pendiente o Confirmada. Si las tiene, lanzar:
+        // throw new ReglaNegocioException("PRD-004", "El producto tiene órdenes activas y no puede eliminarse.");
+        // Requiere que Orders.API exista y exponga un endpoint para consultar órdenes por producto.
+
+
         await _repository.DeleteAsync(id);
         _logger.LogInformation("Producto eliminado. Id={Id}", id);
     }
