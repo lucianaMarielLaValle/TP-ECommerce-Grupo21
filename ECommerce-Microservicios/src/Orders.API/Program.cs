@@ -5,8 +5,9 @@ using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.Sqlite;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
-using Orders.Api.ExceptionHandlers;
+using Orders.API.ExceptionHandlers;
 using Orders.API.Repositories;
+using Orders.API.Services;
 using Serilog;
 using Serilog.Context;
 using Serilog.Events;
@@ -39,7 +40,7 @@ builder.Host.UseSerilog();
 builder.Services.AddSingleton<DatabaseInitializer>();
 builder.Services.AddScoped<IOrderRepository, OrderRepository>();
 
-builder.Services.AddScoped<IOrderService, OrderService>();
+builder.Services.AddScoped<OrderService>();
 
 
 // HTTP ENTRE SERVICIOS — IHttpClientFactory (ORD-003 valida usuario, ORD-004/005 valida producto/stock)
