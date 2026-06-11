@@ -6,12 +6,14 @@ namespace Products.API.Services;
 
 public class ProductService
 {
+    private readonly OrdersClient _ordersClient;
     private readonly ProductRepository _repository;
     private readonly ILogger<ProductService> _logger;
 
-    public ProductService(ProductRepository repository, ILogger<ProductService> logger)
+    public ProductService(ProductRepository repository, OrdersClient ordersClient, ILogger<ProductService> logger)
     {
         _repository = repository;
+        _ordersClient = ordersClient;
         _logger = logger;
     }
 
@@ -97,11 +99,12 @@ public class ProductService
             throw new NoEncontradoException("PRD-001", "Producto no encontrado.");
         }
 
-        // TODO PRD-004: antes de eliminar, consultar a Orders.API si el producto
-        // tiene órdenes en estado Pendiente o Confirmada. Si las tiene, lanzar:
-        // throw new ReglaNegocioException("PRD-004", "El producto tiene órdenes activas y no puede eliminarse.");
-        // Requiere que Orders.API exista y exponga un endpoint para consultar órdenes por producto.
-
+        // PRD-004: no se puede eliminar si tiene órdenes activas
+        if (await _ordersClient.TieneOrdenesActivasAsync(id))
+        {
+            _logger.LogWarning("Producto con órdenes activas. ErrorCode={ErrorCode}, Id={Id}", "PRD-004", id);
+            throw new ReglaNegocioException("PRD-004", "El producto tiene órdenes activas y no puede eliminarse.");
+        }
 
         await _repository.DeleteAsync(id);
         _logger.LogInformation("Producto eliminado. Id={Id}", id);

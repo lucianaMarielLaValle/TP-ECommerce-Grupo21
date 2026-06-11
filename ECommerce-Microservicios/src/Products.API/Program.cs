@@ -65,6 +65,14 @@ builder.Services.AddProblemDetails();
 builder.Services.AddHealthChecks()
     .AddCheck<SqliteHealthCheck>("sqlite-db", tags: new[] { "ready" });
 
+// Cliente HTTP hacia Orders (para validar PRD-004)
+builder.Services.AddHttpContextAccessor();
+builder.Services.AddTransient<CorrelationIdHandler>();
+builder.Services.AddHttpClient<OrdersClient>(client =>
+    {
+        client.BaseAddress = new Uri(builder.Configuration["ServiciosExternos:OrdersApiUrl"]!);
+    }).AddHttpMessageHandler<CorrelationIdHandler>();
+
 var app = builder.Build();
 
 // Crea la tabla al arrancar
