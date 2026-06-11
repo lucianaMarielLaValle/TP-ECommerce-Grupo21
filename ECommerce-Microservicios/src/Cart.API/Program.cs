@@ -49,7 +49,7 @@ builder.Services.AddHttpContextAccessor();
 builder.Services.AddTransient<CorrelationIdHandler>();
 
 builder.Services.AddHttpClient("Products", c =>
-        c.BaseAddress = new Uri(builder.Configuration["Services:ProductsApi"] ?? "http://localhost:5001"))
+        c.BaseAddress = new Uri(builder.Configuration["Services:ProductsApi"] ?? "http://localhost:5000"))
     .AddHttpMessageHandler<CorrelationIdHandler>();
 
 // CONTROLLERS + validación
