@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Diagnostics;
 using Orders.Api.Exceptions;
 
-namespace Orders.Api.ExceptionHandlers;
+namespace Orders.API.ExceptionHandlers;
 
 /// <summary>
 /// Maneja NoEncontradoException y responde 404 con el formato Problem Details del enunciado.

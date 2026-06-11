@@ -1,7 +1,7 @@
 using Dapper;
 using Microsoft.Data.Sqlite;
 
-namespace Orders.Api.Persistence;
+namespace Orders.API.Repositories;
 
 /// <summary>
 /// Crea el esquema de la base SQLite al arrancar la aplicación.

@@ -1,4 +1,4 @@
-namespace Orders.Api.DTOs;
+namespace Orders.API.DTOs;
 
 /// <summary>
 /// Response de PUT /api/orders/{id}/status.

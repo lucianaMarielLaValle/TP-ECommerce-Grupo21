@@ -1,4 +1,4 @@
-namespace Orders.Api.Exceptions;
+namespace Orders.API.Exceptions;
 
 /// <summary>
 /// Violación de una regla de negocio. En el catálogo de Orders dos códigos pasan por acá

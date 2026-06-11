@@ -1,4 +1,4 @@
-namespace Orders.Api.DTOs;
+namespace Orders.API.DTOs;
 
 /// <summary>
 /// Item tal como se devuelve en las responses de orden.

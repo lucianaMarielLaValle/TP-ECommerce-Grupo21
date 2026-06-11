@@ -1,9 +1,9 @@
 using System.Globalization;
 using Dapper;
 using Microsoft.Data.Sqlite;
-using Orders.Api.Models;
+using Orders.API.Models;
 
-namespace Orders.Api.Persistence;
+namespace Orders.API.Repositories;
 
 /// <summary>
 /// Implementación del repositorio de órdenes con SQLite + Dapper.

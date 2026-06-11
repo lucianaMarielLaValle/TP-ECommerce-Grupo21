@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.Sqlite;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Orders.Api.ExceptionHandlers;
-using Orders.Api.Persistence;
+using Orders.API.Repositories;
 using Serilog;
 using Serilog.Context;
 using Serilog.Events;

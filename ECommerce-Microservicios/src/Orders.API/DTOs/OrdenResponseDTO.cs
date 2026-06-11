@@ -1,4 +1,4 @@
-namespace Orders.Api.DTOs;
+namespace Orders.API.DTOs;
 
 /// <summary>
 /// Response de GET /api/orders, GET /api/orders/{id} y POST /api/orders.

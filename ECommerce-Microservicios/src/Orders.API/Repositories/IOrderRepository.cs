@@ -1,6 +1,6 @@
-using Orders.Api.Models;
+using Orders.API.Models;
 
-namespace Orders.Api.Persistence;
+namespace Orders.API.Repositories;
 
 public interface IOrderRepository
 {

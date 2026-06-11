@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Diagnostics;
 
-namespace Orders.Api.ExceptionHandlers;
+namespace Orders.API.ExceptionHandlers;
 
 /// <summary>
 /// Red de seguridad: cualquier excepción no contemplada cae acá y se responde 500 (ORD-007).

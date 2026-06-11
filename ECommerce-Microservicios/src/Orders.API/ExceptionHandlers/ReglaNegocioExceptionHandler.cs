@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Diagnostics;
 using Orders.Api.Exceptions;
 
-namespace Orders.Api.ExceptionHandlers;
+namespace Orders.API.ExceptionHandlers;
 
 /// <summary>
 /// Maneja ReglaNegocioException. El HTTP depende del StatusCode que traiga la excepción:

@@ -1,4 +1,4 @@
-namespace Orders.Api.Exceptions;
+namespace Orders.API.Exceptions;
 
 /// <summary>
 /// Recurso no encontrado. La lanza el Service para los códigos del catálogo que devuelven 404:

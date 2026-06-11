@@ -1,4 +1,4 @@
-namespace Orders.Api.Exceptions;
+namespace Orders.API.Exceptions;
 
 /// <summary>
 /// Datos inválidos. La lanza el Service para ORD-002 (400) cuando una validación

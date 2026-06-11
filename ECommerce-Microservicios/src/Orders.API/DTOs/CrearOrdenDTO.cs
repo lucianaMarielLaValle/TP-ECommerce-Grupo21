@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace Orders.Api.DTOs;
+namespace Orders.API.DTOs;
 
 /// <summary>
 /// Cuerpo del POST /api/orders. 

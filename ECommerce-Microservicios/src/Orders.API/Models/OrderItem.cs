@@ -1,4 +1,4 @@
-namespace Orders.Api.Models;
+namespace Orders.API.Models;
 
 /// <summary>
 /// Línea de detalle de una orden.
