@@ -59,4 +59,11 @@ public class OrdersController : ControllerBase
     [ProducesResponseType(StatusCodes.Status409Conflict)]
     public async Task<IActionResult> CambiarEstado(Guid id, [FromBody] CambiarEstadoDTO request)
         => Ok(await _service.CambiarEstadoAsync(id, request));
+
+    /// <summary>Indica si un producto está en órdenes activas (Pendiente o Confirmada).</summary>
+    /// <response code="200">Resultado de la verificación.</response>
+    [HttpGet("producto/{productoId}/activas")]
+    [ProducesResponseType(typeof(bool), StatusCodes.Status200OK)]
+    public async Task<IActionResult> TieneOrdenesActivas(Guid productoId)
+        => Ok(await _service.TieneOrdenesActivasAsync(productoId));
 }

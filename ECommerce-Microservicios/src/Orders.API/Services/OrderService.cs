@@ -136,6 +136,16 @@ public class OrderService
         return order;
     }
 
+    public async Task<bool> TieneOrdenesActivasAsync(Guid productoId)
+    {
+        var ordenes = await _repository.GetAllAsync(null);
+        var estadosActivos = new[] { "Pendiente", "Confirmada" };
+
+        return ordenes.Any(o =>
+            estadosActivos.Contains(o.Estado) &&
+            o.Items.Any(i => i.ProductoId == productoId));
+    }
+
     // Transiciones de estado permitidas
     private static bool EsTransicionValida(string actual, string nuevo)
     {
@@ -148,7 +158,6 @@ public class OrderService
             ["Cancelada"]  = Array.Empty<string>()
         };
 
-        return transiciones.TryGetValue(actual, out var permitidos)
-               && permitidos.Contains(nuevo);
+        return transiciones.TryGetValue(actual, out var permitidos) && permitidos.Contains(nuevo);
     }
 }
