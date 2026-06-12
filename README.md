@@ -8,7 +8,7 @@ Sistema de e-commerce basado en una arquitectura de microservicios. Cada funcion
 
 ## Arquitectura
 
-![Diagrama de arquitectura](docs/diagrama-arquitectura.png)
+![Diagrama de arquitectura](ECommerce-Microservicios/docs/Diagrama/diagrama-arquitectura.png)
 
 El sistema está compuesto por cinco microservicios. Cada uno tiene su propia base de datos SQLite y se comunica con los demás vía HTTP usando `IHttpClientFactory`.
 
