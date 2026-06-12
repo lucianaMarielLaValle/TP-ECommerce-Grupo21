@@ -186,8 +186,8 @@ ECommerce-Microservicios.sln
 
 ## Integrantes — Grupo 21
 
-| Integrante |
-|---|
-| 903094	Joaquin Hilas |
-| 898739	Federico Cosi |
-| 909003	Luciana La Valle |
+| N° Registro | Nombre y Apellido |
+|---|---|
+| 903094 |	Joaquin Hilas |
+| 898739 |	Federico Cosi |
+| 909003 |	Luciana La Valle |
